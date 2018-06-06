@@ -22,7 +22,7 @@ public class Application {
     
 	@RequestMapping("/")
     public String index(){
-        return "gitdemo index.";
+        return "gitdemo index.ps:update.v1.";
     }
 	
     @RequestMapping("/userinfo")
