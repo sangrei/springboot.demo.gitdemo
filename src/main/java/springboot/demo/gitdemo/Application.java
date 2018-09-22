@@ -1,6 +1,9 @@
 package springboot.demo.gitdemo;
 
-import org.springframework.beans.factory.annotation.Value;
+import java.util.Date;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,23 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class Application {
 
+	static Logger logger = LoggerFactory.getLogger(Application.class); 
+	
 	public static void main(String[] args) {
+		logger.info("Start app.");
 		SpringApplication.run(Application.class, args);
 	}
 	
-	@Value("${user.name}") 
-    private String name;
-	
-	@Value("${user.email}") 
-    private String email;
     
-	@RequestMapping("/")
+	@RequestMapping(value="/index")
     public String index(){
-        return "gitdemo index.ps:update.v1.2.";
-    }
-	
-    @RequestMapping("/userinfo")
-    public String userinfo(){
-        return name+","+email;
+		
+		logger.info("/index");
+		logger.error("/index/error");
+        return "gitdemo index.ps:update.v1.2."+new Date();
     }
 }
